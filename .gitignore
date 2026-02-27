@@ -1,0 +1,12 @@
+build/
+bunny_datasets/
+misc/
+some_results/
+
+*.o
+*.out
+*.exe
+*.log
+*.obj
+
+.vscode/
