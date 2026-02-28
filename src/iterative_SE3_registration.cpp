@@ -1,6 +1,6 @@
 #include "iterative_SE3_registration.hpp"
 
-// Copy pasted from Open3D because it is a public class member
+// Copy-pasted from Open3D because it is a private class member
 inline Eigen::Matrix3d GetRotationFromE1ToX(const Eigen::Vector3d &x) {
     const Eigen::Vector3d e1{1, 0, 0};
     const Eigen::Vector3d v = e1.cross(x);
