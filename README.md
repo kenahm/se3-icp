@@ -2,11 +2,15 @@
 
 Official implementation: [A Generalization of Iterative Closest Point Registration Algorithms using a Local Reference Frame based SE(3) Augmentation](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11396504) (IEEE Access, 2026) Kenan Ahmic, Michael Stolz, and Daniel Watzenig.
 
-## Method overview
+## Introduction
 
-SE(3)-ICP is a generalization of popular iterative closest point (ICP) methods, including point-to-point, point-to-plane, and generalized ICP. Instead of aligning point clouds by operating over 3D points, it operates over augmented SE(3) sets. A 3D point **p** in point cloud P is augmented into a 4x4 homogeneous matrix whose translation is the original point **p** and the rotation part is computed using a local reference frame technique of choice - we use the Triple Orthogonal Local Depth Images (TOLDI) method. 
+<p align="center">
+  <img src="images/method_illustration.png" width="450">
+  <br />
+  <em> The key idea of the proposed method is to augment 3D points into SE(3) elements, represented as 4x4 homogeneous matrices. The translation part is defined as the original point, and the rotation part is computed using a local reference frame method (we use the TOLDI LRF method).  We then formulate ICP-based algorithms by comparing distances in SE(3) space, depicted as the curved line.  </em>
+</p>
 
-We then perform ICP-style registration by iterating correspondence search and optimization steps until some convergence criteria are met. The optimization step of standard ICP methods remains the same. However, we perform a correspondence search over the augmented clouds. This is done by performing a nearest neighbor search over SE(3) space while effectively balancing rotation and translation components. If the rotation weighting coefficient is zero, we recover standard ICP methods. In fact, we let our method reduce to standard ICP methods in the latter iterations for some extra precision (check out the paper for more details).
+SE(3)-ICP is a generalization of popular iterative closest point (ICP) methods, including point-to-point, point-to-plane, and generalized ICP. After augmenting 3D points **p** into sets of 4x4 SE(3) homogeneous matrix, we then perform ICP-based registration by iterating correspondence search and optimization steps until some convergence criteria are met. The optimization step of standard ICP methods remains the same. However, we perform a correspondence search over the augmented clouds. This is done by performing a nearest neighbor search over SE(3) space while effectively balancing rotation and translation components. If the rotation weighting coefficient is zero, we recover standard ICP methods. In fact, we let our method reduce to standard ICP methods in the latter iterations for some extra precision (check out the paper for more details).
 
 **Results**: Substantial increase in the convergence basin compared to standard ICP methods, which require a much more precise initial guess. We obtain the best result among many fine-registration methods over a few benchmarks, while retaining the efficiency and simplicity of ICP.   
 
