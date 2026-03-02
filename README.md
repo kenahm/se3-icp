@@ -75,6 +75,10 @@ To reproduce results for other methods, simply replace se3_pt2pl with the approp
 ./benchmark_lounge se3_gicp_with_cf ~/data_SE3_icp/lounge/
 ```
 
+## Todo 
+
+1. Python bindings
+
 ## Citation | [PDF Link](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11396504) | [IEEE Xplore](https://ieeexplore.ieee.org/document/11396504)
 
 If you use SE(3)-ICP for any academic work, please cite our paper:
