@@ -30,12 +30,22 @@ SE(3)-ICP is a generalization of popular iterative closest point (ICP) methods, 
 sudo apt update
 sudo apt install -y build-essential cmake git libeigen3-dev libpcl-dev libomp-dev
 
-# Install/build Open3D separately following its docs:
-# https://www.open3d.org/docs/release/compilation.html
+# Build Open3D from source, for example in the home folder
+cd ~
+git clone https://github.com/isl-org/Open3D
+cd Open3D
+git checkout 1868f4332 # use the exact same snapshot, but would probably work without this
+util/install_deps_ubuntu.sh # install Open3D dependencies
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
+make install
+# Check the instructions at https://www.open3d.org/docs/release/compilation.html if needed
 ```
 
 #### Clone & build
 ```bash
+cd ~
 git clone https://github.com/kenahm/se3-icp.git
 cd se3-icp
 mkdir build && cd build
